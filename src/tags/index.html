@@ -7,6 +7,7 @@ pagination:
 permalink: /tags/{{ tag }}/
 ---
 
+<section class="container mt-15">
 <div class="mx-auto lg:h-screen flex flex-col">
   <h1>
     <strong class="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-green-700">
@@ -15,10 +16,10 @@ permalink: /tags/{{ tag }}/
     </strong>
   </h1>
 
-<ol class='text-green-700'>
+<ol class='list-decimal list-inside'>
       {% set taglist = collections[ tag ] %}
       {% for post in taglist | reverse %}
-	<li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
+	<li><a class='text-color_10' href="{{ post.url | url }}">{{ post.data.title }}</a></li>
 	{% endfor %}
 </ol>
 
