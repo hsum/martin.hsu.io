@@ -14,13 +14,16 @@ htmx is a natural extension of html.  It works well with Django and other server
 
 Aside from testing, you want your htmx Django callables to be accessed from htmx only.  This decorator assures this to be the case.
 ```
+import functools
 from django.http import HttpResponseForbidden
 
 def htmx_only(view_func):
+    @functools.wraps(view_func)
     def wrap(request, *args, **kwargs):
         if request.headers.get('HX-Request'):
             return view_func(request, *args, **kwargs)
         else:
             return HttpResponseForbidden()
     return wrap
+
 ```
