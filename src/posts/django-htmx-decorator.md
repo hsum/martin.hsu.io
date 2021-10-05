@@ -1,7 +1,6 @@
 ---
 title: 'view decorator: htmx_only'
 description: htmx is a natural extension of html.  It works well with Django and other server side page generating frameworks and such.  I wrote a simple decorator to require view can be accessed from htmx only.
-author: Martin J. Hsu
 date: 2021-10-01
 tags:
   - django

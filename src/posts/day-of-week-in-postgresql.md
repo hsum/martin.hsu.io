@@ -2,7 +2,6 @@
 title: day of week in postgresql
 description: how to extract day of week from a date in postgresql
 date: 2021-10-05
-author: Martin J. Hsu
 tags:
   - sql
   - postgresql

@@ -2,7 +2,6 @@
 title: CommonMark help
 description: This post came with the most excellent Neat Starter and is a great CommonMark cheatsheet.
 date: 2021-09-29
-author: Martin J. hsu
 tags:
   - commonmark
 related_links:
