@@ -1,15 +1,19 @@
 ---
-title: This is my third post
-description: Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
-date: 2020-09-03
-author: Surjith S M
+title: CommonMark help
+description: This post came with the most excellent Neat Starter and is a great CommonMark cheatsheet.
+date: 2021-09-29
+author: Martin J. hsu
 tags:
-  - second-tag
+  - commonmark
+related_links:
+  - ['CommonMark', 'https://commonmark.org/help/', null]
+  - ['CommonMark Spec', 'https://spec.commonmark.org/0.30/', null]
+  - ['Markdown Cheat Sheet', 'https://www.markdownguide.org/cheat-sheet/', 'https://d33wubrfki0l68.cloudfront.net/f1f475a6fda1c2c4be4cac04033db5c3293032b4/513a4/assets/images/markdown-mark-white.svg']
 ---
 
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+This post came with the most excellent Neat Starter and is a great CommonMark cheatsheet.
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+# This is a Heading h1
 
 ## h2 Heading
 

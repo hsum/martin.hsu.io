@@ -5,10 +5,10 @@ prism: true
 
 <div class="container max-w-4xl mt-6  px-6">
     <div class="pb-5 mb-5 border-b border-gray-100">
-        <h1 class="font-bold text-5xl">{{title}}</h1>
+        <h1 class="font-bold text-5xl text-color_30">{{title}}</h1>
         <p class="text-center text-base leading-6 font-medium text-gray-500">
             <time> {{ date | readableDate }}
-                by
+		    <small class='text-gray-400'>by</small>
                 <a>{{ author }}</a>
 
             </time>
@@ -18,4 +18,32 @@ prism: true
     <article class="prose lg:prose-xl my-4 mx-auto">
         {{ content | safe }}</article>
 
+	{% if tags %}
+    <div class="pb-5 mb-5">
+		{% for tag in tags -%}
+		<a class="italic" href="/tags/{{ tag }}" class="post-tag">{{ tag }}</a>
+		{%- if not loop.last -%}
+			,
+		{% endif %}
+		{%- endfor %}
+    </div>
+	{%- endif %}
+	{% if related_links %}
+    <div class="pb-5 mb-5">
+	    {% if related_links | length > 1 %}
+		<ol class='list-decimal list-inside'>
+		{% for label, url, vid in related_links -%}
+		<li>{%- if vid -%}{% if 'http' in vid %}<img class='inline h-4' src='{{ vid }}' />{% else %}{{ vid }}{%- endif -%}{%- endif -%}&nbsp;<a class='text-color_10' href="{{ url }}">{{ label }}</a></li>
+		{%- endfor %}
+		</ol>
+	    {% else %}
+		{% for label, url, vid in related_links -%}
+		<div>{%- if vid -%}{% if 'http' in vid %}<img class='inline h-4' src='{{ vid }}' />{% else %}{{ vid }}{%- endif -%}{%- endif -%}&nbsp;<a class='text-color_10' href="{{ url }}">{{ label }}</a></div>
+	{% endfor %}
+	    {% endif %}
+    </div>
+	{%- endif %}
+    <div class="pb-5 mb-5 border-b border-gray-100">
+	<a href='/blog'>more...</a>
+    </div>
 </div>

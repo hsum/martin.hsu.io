@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="theme-color" content="#2b6cb0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
       {{title}}
@@ -16,8 +17,12 @@
       <link rel="stylesheet" type="text/css" href="/static/css/prism-tomorrow.css">
     {% endif %}
   </head>
-  <body>
-    {% include "./partials/navbar.html" %}
+  <body class="bg-color_60 text-text_dark">
+	  <div class='p-4'>
+            <a href="/" class="text-2xl font-bold font-serif">
+	  Martin J. Hsu
+	    </a>
+	  </div>
 
     {{ content | safe }}
 
@@ -28,7 +33,9 @@
     {% if path == "home" %}
       <!-- Netlify Identity Widget -->
       <!-- Needed only if you are using Netlify Identity feature -->
+      {#
       <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+      #}
     {% endif %}
 
   </body>
