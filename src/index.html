@@ -22,7 +22,7 @@ path: home
     {% for post in postslist | reverse %}
     {% if loop.index0 < 3 %}
         <article class="my-8">
-            <h2 class="text-3xl text-color_30 mb-2">
+            <h2 class="text-3xl text-color_30 mb-2 underline" style='text-decoration-color: #b3d4ff'>
                 <a href="{{ post.url | url }}">
                     {% if post.data.title %}
                         {{ post.data.title }}
