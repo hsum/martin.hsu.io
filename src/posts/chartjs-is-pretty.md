@@ -8,6 +8,7 @@ tags:
   - javascript
 related_links:
   - ['Chart.js', 'https://www.chartjs.org/', 'https://www.chartjs.org/favicon.ico']
+  - ['Awesome Chart.js', 'https://github.com/chartjs/awesome', null]
 ---
 <canvas id="myChart"></canvas>
 <script>
