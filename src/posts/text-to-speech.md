@@ -43,17 +43,33 @@ css_page: >
     float: left;
     width: 10%;
     line-height: 1.5;
+    color: #888;
   }
   
   .rate-value, .pitch-value {
-    float: right;
     width: 5%;
     line-height: 1.5;
+    color: #888;
+  }
+  
+  .instructions {
+    color: #888;
+  }
+
+  .label {
+    color: #666;
   }
   
   #rate, #pitch {
     float: right;
     width: 81%;
+  }
+  .controls {
+    margin-top: 10px;
+  }
+
+  .controls button {
+    padding: 10px;
   }
   </style>
 ---
@@ -64,17 +80,17 @@ var synth = window.speechSynthesis;
 
 var inputForm = document.querySelector('form');
 var inputText = document.getElementById('text');
-var inputLang = document.getElementById('lang');
+var voiceSelect = document.getElementById('voiceSelect');
 
-var pitch = document.querySelector('#pitch');
-var pitchValue = document.querySelector('.pitch-value');
-var rate = document.querySelector('#rate');
-var rateValue = document.querySelector('.rate-value');
+var pitch = document.getElementById('pitch');
+var pitchValue = document.getElementById('pitchvalue');
+var rate = document.getElementById('rate');
+var rateValue = document.getElementById('ratevalue');
 
 function speak(){
   if(inputText.value !== ''){
     var utterThis = new SpeechSynthesisUtterance(inputText.value);
-    utterThis.lang = inputLang.value;
+    utterThis.lang = voiceSelect.selectedOptions[0].dataset.lang;
     utterThis.pitch = pitch.value;
     utterThis.rate = rate.value;
     synth.speak(utterThis);
@@ -99,24 +115,57 @@ rate.onchange = function() {
   inputText.blur();
 }
 
+voiceSelect.addEventListener('change', (event) => {
+  speak();
+  inputText.blur();
+});
+
+function populateVoiceList() {
+  if(typeof speechSynthesis === 'undefined') {
+    return;
+  }
+
+  var voices = speechSynthesis.getVoices();
+
+  for(var i = 0; i < voices.length; i++) {
+    var option = document.createElement('option');
+    option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+
+    if(voices[i].lang==='en-US') {
+      option.selected = true;
+    }
+
+    option.setAttribute('data-lang', voices[i].lang);
+    option.setAttribute('data-name', voices[i].name);
+    document.getElementById("voiceSelect").appendChild(option);
+  }
+}
+
+populateVoiceList();
+if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
+  speechSynthesis.onvoiceschanged = populateVoiceList;
+}
+
 });
 </script>
 
-<h1>Speech synthesiser</h1>
 
-<p>Enter some text, change the rate or pitch.</p>
-    
+
+<div class="max-w rounded overflow-hidden shadow-lg">
+  <div class="px-6 py-4">
+  <h2 style='color: #006EFF'>Speech synthesiser</h2>
+
+<p class='instructions text-left'>Enter some text, change the rate or pitch.</p>
+  </div>
 <form>
-  <input type="text" id='text' class="txt" value='{{ settings.name }}'>
-  <input type="text" id='lang' class="txt" value='en-US'>
-  <div>
-    <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate">
-    <div class="rate-value">1</div>
-    <div class="clearfix"></div>
-  </div>
-  <div>
-    <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch">
-    <div class="pitch-value">1</div>
-    <div class="clearfix"></div>
-  </div>
+<div class="grid grid-cols-1 md:grid-cols-2">
+    <div class='label'>text</div><div><input type="text" id='text' class="txt" value='{{ settings.name }}'></div>
+    <div class='label'>voice</div><div><select id="voiceSelect" class="form-select block w-full mt-1"></select></div>
+    <div class='label'>rate <span id='ratevalue'>1</span></div><div><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate"></div>
+    <div class='label'>pitch <span id='pitchvalue'>1</span></div><div><input type="range" min="0.5" max="2" value="1" step="0.1" id="pitch"></div>
+</div>
+   <div class="controls">
+      <button id="read" type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Read</button>
+    </div>
 </form>
+</div>
