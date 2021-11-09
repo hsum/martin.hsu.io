@@ -153,7 +153,7 @@ if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !=
 
 <div class="max-w rounded overflow-hidden shadow-lg">
   <div class="px-6 py-4">
-  <h2 style='color: #006EFF'>Speech synthesiser</h2>
+  <h2 style='color: #006EFF'>Speech synthesizer</h2>
 
 <p class='instructions text-left'>Enter some text, change the rate or pitch.</p>
   </div>
